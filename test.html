@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba con Fetch</title>
+    <link href="estilo.css" rel="stylesheet"> <!-- Pequeña hoja de estilos para dar formato-->
+    <script>
+        const url="http://api.openweathermap.org/data/2.5/weather?q=Montevideo,UY&appid=36975f3faa1b926c955635540ac731a2"; 
+        //dirección de la API. Puede ser la ruta a un archivo json. CREA LA TUYA.
+
+        fetch(url) //Realizamos el fetch que devolverá una promesa
+            .then( respuesta=>respuesta.json()) //Obtenemos una promesa que trataremos como json
+            .then(datos=> { //obtenemos una nueva promesa, pero los datos ya están como json.
+                document.getElementById('ciudad').innerHTML= datos.name + ", " + datos.sys.country; //escribo los datos del país
+                document.getElementById('temp').innerHTML=(datos.main.temp -273.15).toFixed(1) + "º";//escribo la temperatura. la convierto de kelvin a celsius
+                document.getElementById('imagen').src="http://openweathermap.org/img/wn/"+ datos.weather[0].icon +".png" //imagen
+                document.getElementById('senster').innerHTML= "Sensación térmica: " + (datos.main.feels_like -273.15).toFixed(1) + "º   ";
+                document.getElementById('humedad').innerHTML= "Humedad: " + datos.main.humidity + "%";
+            })
+            .catch( error => alert("Hubo un error: " + error));
+    </script>
+</head>
+<body>
+    <h1>Cómo está el clima hoy</h1>
+    <div>
+        <span id="ciudad"></span><br>
+        <span id="temp"> </span>
+        <img id="imagen" src=""><br>
+        <p id="extras"><span id="senster"></span><br>
+        <span id="humedad"></span></p>
+    </div>
+
+</body>
+</html>

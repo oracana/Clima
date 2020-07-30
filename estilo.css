@@ -1,0 +1,53 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+body{
+    background-image: url("estaciones3.jpg");
+    background-size: cover;
+
+}
+
+h1{
+    font-size: 5em;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+div {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    float: inherit;
+    margin: auto;
+    width: 45%;
+    text-align: center;
+    padding: 10px;
+}
+#ciudad {
+    font-size: large;
+    color: darkslategray;
+    font-weight: bold;
+}
+#temp {
+    font-size: xx-large;
+    color: grey;
+    font-weight: bolder;
+    animation: blinker 1s infinite;
+    
+}
+
+#extras {
+    font-size: small;
+    color: darkslategray;
+}
+
+img { align-content: center;
+      width: 35px;
+    height: 35px;}
+@keyframes blinker {
+    50% {
+    opacity: 0;
+    }
+    }
